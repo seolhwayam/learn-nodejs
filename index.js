@@ -61,10 +61,88 @@ const server = http.createServer((req,res) => {
     }
 })
 
+
+
+const add = (a,b) => {
+    return a+b;
+}
+
+const minus = (a,b) => {
+    return a-b;
+}
+
+const introduce = (name,age) => {
+    return '안녕하세요' + name + '님. 당신의 나이는 ' +age+'세 입니다.';
+}
+
+const orderSandwich = (type) => {
+    if (type === 'vegan') {
+        return '빵 + 시금치 + 토마토 + 아보카도 + 오이'
+    }else{
+        return '빵 + 시금치 + 토마토 + 치즈 + 베이컨'
+    }
+}
+
+const students = [
+  { name: "Alice", age: 22, major: "Computer Science" },
+  { name: "Bob", age: 21, major: "Mathematics" },
+  { name: "Charlie", age: 23, major: "Physics" },
+  { name: "David", age: 20, major: "Chemistry" },
+  { name: "Eva", age: 22, major: "Biology" }
+];
+
+const numbers = [1,2,3,4,5];
+const numbers2 = [1,2,3,4,5,6];
+
+const incrementedNumber = (numbers) =>{
+
+    for (var i = 0; i < numbers.length; i++) {
+        numbers[i] = numbers[i]+1;
+    } 
+    return numbers;
+}
+
+const evenNumbers = (numbers2) =>{
+    const evenNumbers = [];
+    for (var i = 0; i < numbers2.length; i++) {
+        if(numbers2[i] % 2 ==0) {
+            evenNumbers.push(numbers2[i])
+        }
+    } 
+    return evenNumbers;
+}
+
+const physicsStudent = students.find(students => students.major === 'Physics');
+
+const davidStudent = students.find(students => students.name === 'David');
+
+
+
+const main = () => {
+    console.log(add(5,3));
+    console.log(minus(5,3));
+    console.log(introduce('김설화','26'));
+    console.log(orderSandwich());
+    console.log(orderSandwich('basic'));
+    console.log(orderSandwich('vegan'));
+
+    for(let i= 5; i>0; i--) {
+        console.log(i);
+    }
+    
+    console.log(incrementedNumber(numbers));
+    console.log(evenNumbers(numbers2));
+
+    console.log(physicsStudent);
+    console.log(davidStudent);
+
+};
+
+
 server.listen(8080,() => {
     console.log("Server ON");
     console.log(__dirname);
-
+    main();
 });
 
 // 정적파일 서빙
